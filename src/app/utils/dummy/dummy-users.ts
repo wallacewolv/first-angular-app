@@ -1,7 +1,7 @@
-import { UserType } from "../model/user";
+import { User } from "../model/user";
 
 export const DUMMY_USERS = {
-  get USERS(): Array<UserType> {
+  get USERS(): Array<User> {
     return [
       {
         id: 'u1',

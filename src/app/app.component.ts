@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from './utils/dummy/dummy-users';
-import { UserType } from './utils/model/user';
+import { User } from './utils/model/user';
 import { TasksComponent } from './tasks/tasks.component';
 
 @Component({
@@ -15,7 +15,7 @@ import { TasksComponent } from './tasks/tasks.component';
   standalone: true
 })
 export class AppComponent {
-  users: Array<UserType> = DUMMY_USERS.USERS;
+  users: Array<User> = DUMMY_USERS.USERS;
   selectedUserId = '';
 
   get selectedUser() {
