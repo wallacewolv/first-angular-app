@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   standalone: true
 })
 export class TasksComponent implements OnInit {
-  @Input({ required: true }) name!: string;
+  @Input() name?: string;
 
   constructor() { }
 
