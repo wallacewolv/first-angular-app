@@ -15,4 +15,8 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   users: Array<UserType> = DUMMY_USERS.USERS;
+
+  onSelectUser(id: string) {
+    console.log(`Selected user id: ${id}`);
+  }
 }
