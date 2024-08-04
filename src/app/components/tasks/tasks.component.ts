@@ -1,3 +1,4 @@
+import { TasksService } from './../../services/tasks.service';
 import { NgFor, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
@@ -18,14 +19,17 @@ export class TasksComponent {
   @Input({ required: true }) user!: User;
 
   isAddingTask = false;
-  tasks = TASKS_DUMMY.TASKS;
+
+  constructor(
+    private tasksService: TasksService,
+  ) { }
 
   get selectedUserTasks() {
-    return this.tasks.filter(task => task.userId === this.user.id);
+    return this.tasksService.getUserTasks(this.user.id);
   }
 
   onCompleteTask(id: string) {
-    this.tasks = this.tasks.filter(task => task.id !== id);
+    this.tasksService.removeTask(id);
   }
 
   onStartAddTask() {
@@ -37,13 +41,7 @@ export class TasksComponent {
   }
 
   onAddTask(taskData: NewTaskData) {
-    this.tasks.push({
-      id: new Date().getTime().toString(),
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.date,
-      userId: this.user.id,
-    });
+    this.tasksService.addTask(taskData, this.user.id);
 
     this.isAddingTask = false;
   }
