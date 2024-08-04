@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { NewTaskData, NewTaskDataViewModel } from './../../../utils/model/new-task-data.model';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-new-task',
@@ -12,8 +13,9 @@ import { NewTaskData, NewTaskDataViewModel } from './../../../utils/model/new-ta
   styleUrls: ['./new-task.component.css']
 })
 export class NewTaskComponent {
-  @Output() cancel = new EventEmitter<void>();
-  @Output() add = new EventEmitter<NewTaskData>();
+  @Input({ required: true }) userId!: string;
+
+  @Output() close = new EventEmitter<void>();
 
   entered = new NewTaskDataViewModel({
     title: '',
@@ -21,11 +23,16 @@ export class NewTaskComponent {
     date: '',
   });
 
+  constructor(
+    private tasksService: TasksService,
+  ) { }
+
   onCancel() {
-    this.cancel.emit();
+    this.close.emit();
   }
 
   onSubmit() {
-    this.add.emit(this.entered);
+    this.tasksService.addTask(this.entered, this.userId);
+    this.close.emit();
   }
 }
