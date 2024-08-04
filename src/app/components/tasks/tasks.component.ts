@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 
 import { TASKS_DUMMY } from '../../utils/dummy/tasks.dummy';
 import { User } from '../../utils/model/user.model';
+import { NewTaskData } from './../../utils/model/new-task-data.model';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { TaskComponent } from './task/task.component';
 
@@ -32,6 +33,18 @@ export class TasksComponent {
   }
 
   onCancelAddTask() {
+    this.isAddingTask = false;
+  }
+
+  onAddTask(taskData: NewTaskData) {
+    this.tasks.push({
+      id: new Date().getTime().toString(),
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.date,
+      userId: this.user.id,
+    });
+
     this.isAddingTask = false;
   }
 }

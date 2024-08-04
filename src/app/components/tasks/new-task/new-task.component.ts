@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { NewTaskData, NewTaskDataViewModel } from './../../../utils/model/new-task-data.model';
+
 @Component({
   selector: 'app-new-task',
   standalone: true,
@@ -11,20 +13,19 @@ import { FormsModule } from '@angular/forms';
 })
 export class NewTaskComponent {
   @Output() cancel = new EventEmitter<void>();
+  @Output() add = new EventEmitter<NewTaskData>();
 
-  enteredTitle = '';
-  enteredSummary = '';
-  enteredDate = '';
+  entered = new NewTaskDataViewModel({
+    title: '',
+    summary: '',
+    date: '',
+  });
 
   onCancel() {
     this.cancel.emit();
   }
 
   onSubmit() {
-    console.log({
-      title: this.enteredTitle,
-      summary: this.enteredSummary,
-      date: this.enteredDate,
-    });
+    this.add.emit(this.entered);
   }
 }
