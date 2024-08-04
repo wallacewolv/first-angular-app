@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { CardComponent } from '../../../shared/card/card.component';
 import { Task } from './../../../utils/model/task.model';
-import { CardComponent } from "../../../shared/card/card.component";
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [CommonModule, CardComponent],
+  imports: [CommonModule, CardComponent, DatePipe],
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.css']
 })
