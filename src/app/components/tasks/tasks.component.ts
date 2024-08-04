@@ -1,8 +1,8 @@
 import { NgFor } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
-import { DUMMY_TASKS } from '../utils/dummy/dummy-tasks';
-import { User } from '../utils/model/user';
+import { DUMMY_TASKS } from '../../utils/dummy/dummy-tasks';
+import { User } from '../../utils/model/user';
 import { TaskComponent } from './task/task.component';
 
 @Component({

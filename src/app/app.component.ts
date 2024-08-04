@@ -1,9 +1,9 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 
-import { HeaderComponent } from './header/header.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { UserComponent } from './user/user.component';
+import { HeaderComponent } from './components/header/header.component';
+import { TasksComponent } from './components/tasks/tasks.component';
+import { UserComponent } from './components/user/user.component';
 import { DUMMY_USERS } from './utils/dummy/dummy-users';
 import { User } from './utils/model/user';
 
