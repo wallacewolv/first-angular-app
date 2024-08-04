@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Task } from 'src/app/utils/model/task';
+import { Task } from 'src/app/utils/model/task.model';
 
 @Component({
   selector: 'app-task',

@@ -1,6 +1,6 @@
-import { Task } from "../model/task";
+import { Task } from "../model/task.model";
 
-export const DUMMY_TASKS = {
+export const TASKS_DUMMY = {
   get TASKS(): Array<Task> {
     return [
       {

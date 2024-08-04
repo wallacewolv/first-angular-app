@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { UserComponent } from './components/user/user.component';
-import { DUMMY_USERS } from './utils/dummy/dummy-users';
-import { User } from './utils/model/user';
+import { USERS_DUMMY } from './utils/dummy/users.dummy';
+import { User } from './utils/model/user.model';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,7 @@ import { User } from './utils/model/user';
   standalone: true
 })
 export class AppComponent {
-  users: Array<User> = DUMMY_USERS.USERS;
+  users: Array<User> = USERS_DUMMY.USERS;
   selectedUserId!: string;
 
   get selectedUser() {

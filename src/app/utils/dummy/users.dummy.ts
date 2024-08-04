@@ -1,6 +1,6 @@
-import { User } from "../model/user";
+import { User } from "../model/user.model";
 
-export const DUMMY_USERS = {
+export const USERS_DUMMY = {
   get USERS(): Array<User> {
     return [
       {

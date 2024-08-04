@@ -1,8 +1,8 @@
 import { NgFor } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
-import { DUMMY_TASKS } from '../../utils/dummy/dummy-tasks';
-import { User } from '../../utils/model/user';
+import { TASKS_DUMMY } from '../../utils/dummy/tasks.dummy';
+import { User } from '../../utils/model/user.model';
 import { TaskComponent } from './task/task.component';
 
 @Component({
@@ -15,7 +15,7 @@ import { TaskComponent } from './task/task.component';
 export class TasksComponent {
   @Input({ required: true }) user!: User;
 
-  tasks = DUMMY_TASKS.TASKS;
+  tasks = TASKS_DUMMY.TASKS;
 
   get selectedUserTasks() {
     return this.tasks.filter(task => task.userId === this.user.id);
