@@ -1,8 +1,9 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 import { TASKS_DUMMY } from '../../utils/dummy/tasks.dummy';
 import { User } from '../../utils/model/user.model';
+import { NewTaskComponent } from './new-task/new-task.component';
 import { TaskComponent } from './task/task.component';
 
 @Component({
@@ -10,11 +11,12 @@ import { TaskComponent } from './task/task.component';
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css'],
   standalone: true,
-  imports: [TaskComponent, NgFor]
+  imports: [TaskComponent, NewTaskComponent, NgFor, NgIf]
 })
 export class TasksComponent {
   @Input({ required: true }) user!: User;
 
+  isAddingTask = false;
   tasks = TASKS_DUMMY.TASKS;
 
   get selectedUserTasks() {
@@ -23,5 +25,9 @@ export class TasksComponent {
 
   onCompleteTask(id: string) {
     this.tasks = this.tasks.filter(task => task.id !== id);
+  }
+
+  onStartAddTask() {
+    this.isAddingTask = true;
   }
 }
