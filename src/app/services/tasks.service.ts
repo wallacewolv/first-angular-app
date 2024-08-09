@@ -8,7 +8,15 @@ import { Task, TaskViewModel } from '../utils/model/task.model';
   providedIn: 'root'
 })
 export class TasksService {
-  private tasks = TASKS_DUMMY.TASKS;
+  private tasks!: Array<Task>;
+
+  constructor() {
+    const tasks = localStorage.getItem('tasks');
+
+    if (tasks) {
+      this.tasks = JSON.parse(tasks);
+    }
+  }
 
   getUserTasks(userId: string): Array<Task> {
     return this.tasks.filter(task => task.userId === userId)
@@ -24,9 +32,15 @@ export class TasksService {
     });
 
     this.tasks.unshift(newTaskData);
+    this.saveTasks();
   }
 
   removeTask(id: string) {
     this.tasks = this.tasks.filter(task => task.id !== id);
+    this.saveTasks();
+  }
+
+  private saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 }
