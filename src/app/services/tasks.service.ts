@@ -8,7 +8,7 @@ import { Task, TaskViewModel } from '../utils/model/task.model';
   providedIn: 'root'
 })
 export class TasksService {
-  private tasks!: Array<Task>;
+  private tasks = TASKS_DUMMY.TASKS;
 
   constructor() {
     const tasks = localStorage.getItem('tasks');
